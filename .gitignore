@@ -1,0 +1,39 @@
+# Visual Studio временные папки и файлы
+.vs/
+EpsilonMath/
+x64/
+Debug/
+Release/
+*.ipch
+*.pdb
+*.obj
+*.exe
+*.ilk
+*.log
+*.tmp
+
+# Файлы проекта Visual Studio (оставляем только код)
+*.sln
+*.slnx
+*.vcxproj
+*.vcxproj.*
+*.user
+*.filters
+
+# Сборка и прочий мусор
+build/
+CMakeFiles/
+*.o
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+Makefile
+cmake_install.cmake
+
+# Системные файлы
+*.swp
+*.bak
+*.orig
+Thumbs.db
