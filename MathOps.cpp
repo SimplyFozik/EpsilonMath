@@ -1,16 +1,9 @@
-#pragma once
 #include <future>
 #include <vector>
+#include "Manager.hpp"
 
-long double Leibniz(long long first_iteration, long long last_iteration) {
-	switch (first_iteration)
-	{
-	case 0:
-		first_iteration++;
-		break;
-	default:
-		break;
-	}
+long double Manager::Leibniz(long long first_iteration, long long last_iteration) {
+	if (first_iteration == 0) { first_iteration++; }
 	long double pi = 0;
 	for (long double i = first_iteration; i < last_iteration; i += 4) {
 		pi += (1 / i);
@@ -19,7 +12,7 @@ long double Leibniz(long long first_iteration, long long last_iteration) {
 	return pi;
 }
 
-long double LeibnizAsyncManager(long long iterations, int threads) {
+long double Manager::LeibnizAsyncManager(long long iterations, int threads) {
 	long long chunk = iterations / threads;
 	long long remaining_iterations = iterations % threads;
 	long double pi = 0;
@@ -27,7 +20,10 @@ long double LeibnizAsyncManager(long long iterations, int threads) {
 	std::vector<std::future<long double>> futures;
 
 	for (int i = 0; i < threads; i++) {
-		futures.push_back(std::async(std::launch::async, Leibniz, i * chunk, i * chunk + chunk));
+		long long start = i * chunk;
+		long long end = start + chunk;
+		if (i == threads - 1) { end += remaining_iterations; }
+		futures.push_back(std::async(std::launch::async, &Manager::Leibniz, this, start, end));
 	}
 
 	for (int i = 0; i < threads; i++) {
