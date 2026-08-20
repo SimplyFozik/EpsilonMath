@@ -1,5 +1,3 @@
-#include <future>
-#include <vector>
 #include "Manager.hpp"
 
 long double Manager::Leibniz(long long first_iteration, long long last_iteration) {

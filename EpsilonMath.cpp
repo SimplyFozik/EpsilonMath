@@ -3,9 +3,8 @@
 #include <cmath>
 #include <chrono>
 #include "Manager.hpp"
-
+ 
 int main()
 {
-	Manager EpsilonMath;
-
+	Manager EpsilonMath; //init manager
 }
