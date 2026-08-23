@@ -32,7 +32,7 @@ enum msgColor {
 class Manager {
 private:
 	bool silent = false;
-	std::string version = "v1.03-dev";
+	std::string version = "v1.04-dev";
 public:
 	bool isSilent() {
 		return silent;
