@@ -2,9 +2,10 @@
 #include <iomanip>
 #include <cmath>
 #include <chrono>
-#include "Manager.hpp"
- 
+//#include "Manager.hpp"
+#include "cli/Application.hpp"
+
 int main()
 {
-	Manager EpsilonMath; //init manager
+	Application application;
 }
