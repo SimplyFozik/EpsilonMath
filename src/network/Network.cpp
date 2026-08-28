@@ -1,5 +1,3 @@
-#include "Manager.hpp"
-
 // Here should be some functions to send results and fetch some data
 // WIP
 
