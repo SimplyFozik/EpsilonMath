@@ -46,6 +46,6 @@ public:
 	void printText(std::string text, messageStyle style);
 
 	Terminal() {
-		printText("Terminal initialized successfully\n", Success);
+		printText("Terminal Service initialized successfully\n", Debug);
 	}
 };
