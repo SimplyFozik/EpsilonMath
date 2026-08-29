@@ -11,19 +11,34 @@
 // \033[37m White
 // \033[0m Default
 
+void Terminal::clearScreen() {
+	#ifdef _WIN32
+		system("cls");
+	#else
+		system("clear");
+	#endif
+}
+
 void Terminal::printPrefix(messageStyle style) {
-	if (style.Type == Terminal::messageType::DebugPrefix) {
-		std::cout << "\033[1;97m[Debug]\033[0m ";
-	} else if (style.Type == Terminal::messageType::InfoPrefix) {
-		std::cout << "\033[1;96m[Info]\033[0m ";
-	} else if (style.Type == Terminal::messageType::SuccessPrefix) {
-		std::cout << "\033[1;92m[Success]\033[0m ";
-	} else if (style.Type == Terminal::messageType::WarningPrefix) {
-		std::cout << "\033[1;93m[Warning]\033[0m ";
-	} else if (style.Type == Terminal::messageType::ErrorPrefix) {
-		std::cout << "\033[0;91m[Error]\033[0m ";
-	} else if (style.Type == Terminal::messageType::FatalPrefix) {
-		std::cout << "\033[1;91m[Fatal]\033[0m ";
+	switch (style.Type) {
+	case Terminal::messageType::DebugPrefix:
+		std::cout << "\n\033[1;97m# \033[0;107m\033[107;30m [Debug] \033[0m\033[1;97m ";
+		break;
+	case Terminal::messageType::InfoPrefix:
+		std::cout << "\n\033[1;94mi \033[0;104m\033[104;30m [Info] \033[0m\033[1;97m ";
+		break;
+	case Terminal::messageType::SuccessPrefix:
+		std::cout << "\n\033[1;92m✓ \033[0;102m\033[102;30m [Success] \033[0m\033[1;97m ";
+		break;
+	case Terminal::messageType::WarningPrefix:
+		std::cout << "\n\u26A0\uFE0E \033[0;43m\033[43;30m [Warning] \033[0m\033[1;97m ";
+		break;
+	case Terminal::messageType::ErrorPrefix:
+		std::cout << "\n\033[1;31mx \033[0;101m\033[101;30m [Error] \033[0m\033[1;97m ";
+		break;
+	case Terminal::messageType::FatalPrefix:
+		std::cout << "\n\033[1;31mx \033[0;101m\033[101;30m [Fatal] \033[0m\033[1;97m ";
+		break;
 	}
 }
 
@@ -48,7 +63,7 @@ void Terminal::setColor(messageStyle style) {
 }
 
 void Terminal::resetColor() {
-	std::cout << "\033[0m";
+	std::cout << "\033[1;97m";
 }
 
 void Terminal::printText(std::string text, messageStyle style) { // comes up with a prefix
@@ -56,4 +71,11 @@ void Terminal::printText(std::string text, messageStyle style) { // comes up wit
 	setColor(style);
 	std::cout << text;
 	resetColor();
+}
+
+std::string Terminal::cinCommand() {
+	std::string command;
+	printText("\n> ", Default);
+	std::getline(std::cin, command);
+	return command;
 }
