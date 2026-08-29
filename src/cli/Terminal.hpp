@@ -39,11 +39,14 @@ public:
 	messageStyle Warning = messageStyle{ messageType::WarningPrefix, messageColor::White };
 	messageStyle Error = messageStyle{ messageType::ErrorPrefix, messageColor::White };
 	messageStyle Fatal = messageStyle{ messageType::FatalPrefix, messageColor::White };
+	messageStyle Default = messageStyle{ messageType::NullPrefix, messageColor::White };
 
 	void printPrefix(messageStyle style);
 	void setColor(messageStyle style);
 	void resetColor();
 	void printText(std::string text, messageStyle style);
+	void clearScreen();
+	std::string cinCommand();
 
 	Terminal() {
 		printText("Terminal Service initialized successfully\n", Debug);
