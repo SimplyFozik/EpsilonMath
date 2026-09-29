@@ -1,3 +1,11 @@
+<<<<<<< Updated upstream
+=======
+.out/
+./CmakeSettings.json
+./CppProperties.json
+
+
+>>>>>>> Stashed changes
 # Visual Studio временные папки и файлы
 .vs/
 EpsilonMath/
