@@ -1,4 +1,6 @@
 .out/
+./CMakeSettings.json
+./CppProperties.json
 
 # Visual Studio временные папки и файлы
 .vs/
