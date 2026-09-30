@@ -1,43 +1,22 @@
-.out/
-./CMakeSettings.json
-./CppProperties.json
 
-# Visual Studio временные папки и файлы
-.vs/
-EpsilonMath/
-x64/
-Debug/
-Release/
-*.ipch
-*.pdb
-*.obj
-*.exe
-*.ilk
-*.log
-*.tmp
-
-# Файлы проекта Visual Studio (оставляем только код)
-*.sln
-*.slnx
-*.vcxproj
-*.vcxproj.*
-*.user
-*.filters
-
-# Сборка и прочий мусор
 build/
+out/
+bin/
+lib/
+
+
+.vs/
+.vscode/
+*.user
+*.suo
+.vs/
+CMakeCache.txt
 CMakeFiles/
-*.o
-*.so
-*.dylib
-*.dll
-*.a
-*.lib
-Makefile
+CMakeScripts/
+DartConfiguration.tcl
+CTestTestfile.cmake
 cmake_install.cmake
 
-# Системные файлы
-*.swp
-*.bak
-*.orig
-Thumbs.db
+
+CMakeSettings.json
+CppProperties.json
