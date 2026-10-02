@@ -6,6 +6,7 @@ class Application {
 private:
 
 	std::string version = "1.07-dev";
+	
 
 public:
 	
@@ -15,12 +16,15 @@ public:
 	// Timer timer;
 
 	Application() : terminal(), parser(&terminal) {
-		terminal.printText("All Services initialized successfully!\n", terminal.Success);
+		#ifdef NDEBUG
+		#else
+			terminal.printText("All Services initialized successfully!\n", terminal.Success);
+		#endif
 		terminal.printText("EpsilonMath version - " + version + "\n", terminal.Info);
 		run();
 	}
 
-	void run() {
+	void run() { // infinite loop
 		while (true) {
 			std::string command = terminal.cinCommand();
 			parser.processCommand(command);
