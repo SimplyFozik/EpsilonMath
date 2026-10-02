@@ -63,7 +63,11 @@ void Terminal::setColor(messageStyle style) {
 }
 
 void Terminal::resetColor() {
-	std::cout << "\033[1;97m";
+	std::cout << "\033[0;37m";
+}
+
+void Terminal::printText(std::string text) {
+	std::cout << text;
 }
 
 void Terminal::printText(std::string text, messageStyle style) { // comes up with a prefix
@@ -75,7 +79,7 @@ void Terminal::printText(std::string text, messageStyle style) { // comes up wit
 
 std::string Terminal::cinCommand() {
 	std::string command;
-	printText("\n> ", Default);
+	printText("\n\033[1;97m> ");
 	std::getline(std::cin, command);
 	return command;
 }

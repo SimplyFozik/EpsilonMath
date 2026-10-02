@@ -44,11 +44,15 @@ public:
 	void printPrefix(messageStyle style);
 	void setColor(messageStyle style);
 	void resetColor();
+	void printText(std::string text);
 	void printText(std::string text, messageStyle style);
 	void clearScreen();
 	std::string cinCommand();
 
 	Terminal() {
-		printText("Terminal Service initialized successfully\n", Debug);
+		#ifdef NDEBUG
+		#else
+			printText("Terminal Service initialized successfully\n", Debug);
+		#endif
 	}
 };

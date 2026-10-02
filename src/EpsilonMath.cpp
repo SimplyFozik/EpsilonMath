@@ -16,6 +16,7 @@ int main() {
         dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
         SetConsoleMode(hOut, dwMode);
         SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
     #endif
 
 	Application application;

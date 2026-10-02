@@ -1,4 +1,3 @@
-#pragma once
 #include "CommandParser.hpp"
 #include "Terminal.hpp"
 
@@ -28,10 +27,13 @@ void CommandParser::processCommand(std::string& command) {
 		break;
 	case 1: // non-complex commands
 		if (words[0] == "help") {
-			for (int i = 0; i < commands_list.size(); i++) { terminal->printText(commands_list[i], terminal->Default); }
+			for (int i = 0; i < commands_list.size(); i++) { terminal->resetColor(); terminal->printText(commands_list[i]); }
 		}
 		else if (words[0] == "clear") {
 			terminal->clearScreen();
+		}
+		else if (words[0] == "sysinfo") {
+			sysinfo_list_print();
 		}
 		else if (words[0] == "exit") {
 			exit(0);
