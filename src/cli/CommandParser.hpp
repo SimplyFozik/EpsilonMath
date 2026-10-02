@@ -25,6 +25,7 @@ private:
 		std::string("SSE3 \033[0;97m       ") + ((cinfo.isSSE3() == 1) ? "\033[0;92m✓" : "\033[0;91mX"),
 		std::string("SSE41 \033[0;97m      ") + ((cinfo.isSSE41() == 1) ? "\033[0;92m✓" : "\033[0;91mX"),
 		std::string("SSE42 \033[0;97m      ") + ((cinfo.isSSE42() == 1) ? "\033[0;92m✓" : "\033[0;91mX"),
+		std::string("AVX \033[0;97m        ") + ((cinfo.isAVX() == 1) ? "\033[0;92m✓" : "\033[0;91mX"),
 		std::string("AVX2 \033[0;97m       ") + ((cinfo.isAVX2() == 1) ? "\033[0;92m✓" : "\033[0;91mX")
 	};
 
@@ -55,10 +56,20 @@ public:
 	void sysinfo_list_print() {
 		std::cout << "\n\033[0;90m ╭─ \033[1;97mSystem Info\033[0;90m ───────────────────────────────────────────────────╮ \n";
 		std::cout << "\033[0;90m │"; for (int i = 0; i <= sysinfo_list_size; i++) { std::cout << ' '; } std::cout << "│\n";
+		std::cout << "\033[0;90m │  \033[0;97mCPU\033[0;90m"; for (int i = 0; i <= sysinfo_list_size - 5; i++) { std::cout << ' '; } std::cout << "│\n";
+		for (int i = 0; i < 2; i++) {
+			std::cout << "\033[0;90m │    \033[0;94m" << sysinfo_list[i];
+			for (int j = 1; j < sysinfo_list_size - sysinfo_list[i].size() + 4; j++) {
+				std::cout << ' ';
+			}
+			std::cout << "\033[0;90m │" << std::endl;
+		}
 		
-		for (int i = 0; i < sysinfo_list.size(); i++) {
-			std::cout << "\033[0;90m │ \033[0;94m" << sysinfo_list[i];
-			for (int j = 1; j < sysinfo_list_size - sysinfo_list[i].size() + 7; j++) {
+		std::cout << "\033[0;90m │"; for (int i = 0; i <= sysinfo_list_size; i++) { std::cout << ' '; } std::cout << "│\n";
+		std::cout << "\033[0;90m │  \033[0;97mInstructions\033[0;90m"; for (int i = 0; i <= sysinfo_list_size - 14; i++) { std::cout << ' '; } std::cout << "│\n";
+		for (int i = 2; i < sysinfo_list.size(); i++) {
+			std::cout << "\033[0;90m │    \033[0;94m" << sysinfo_list[i];
+			for (int j = 1; j < sysinfo_list_size - sysinfo_list[i].size() + 13; j++) {
 				std::cout << ' ';
 			}
 			std::cout << "\033[0;90m │" << std::endl;
