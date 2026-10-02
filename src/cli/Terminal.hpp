@@ -52,6 +52,7 @@ public:
 	Terminal() {
 		#ifdef NDEBUG
 		#else
+			printText("Debug mode ON, to turn it off, switch compiler to release mode\n", Debug);
 			printText("Terminal Service initialized successfully\n", Debug);
 		#endif
 	}

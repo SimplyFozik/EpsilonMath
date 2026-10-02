@@ -5,7 +5,7 @@
 class Application {
 private:
 
-	std::string version = "1.07-dev";
+	std::string version = "1.09-dev";
 	
 
 public:
